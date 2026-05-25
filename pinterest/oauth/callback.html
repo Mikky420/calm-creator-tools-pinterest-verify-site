@@ -1,0 +1,124 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pinterest OAuth Callback | Calm Creator Tools</title>
+  <meta name="robots" content="noindex,nofollow">
+  <style>
+    :root {
+      color-scheme: light;
+      --ink: #1f2933;
+      --muted: #56616d;
+      --line: #d9e2ec;
+      --bg: #f7f9fb;
+      --panel: #fff;
+      --accent: #1f7a6d;
+      --danger: #9b1c1c;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--ink);
+      background: var(--bg);
+      line-height: 1.55;
+    }
+    main {
+      width: min(860px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 42px 0 56px;
+    }
+    h1 { font-size: 32px; line-height: 1.15; margin: 0 0 12px; letter-spacing: 0; }
+    h2 { font-size: 20px; margin: 28px 0 10px; letter-spacing: 0; }
+    p { margin: 0 0 14px; }
+    code, textarea {
+      font-family: Consolas, "Courier New", monospace;
+      font-size: 14px;
+    }
+    .panel {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 18px;
+      margin-top: 18px;
+    }
+    .warning {
+      border-color: #f5c2c7;
+      color: var(--danger);
+      background: #fff5f5;
+    }
+    textarea {
+      width: 100%;
+      min-height: 96px;
+      resize: vertical;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 10px;
+      background: #fbfdff;
+      color: var(--ink);
+    }
+    button {
+      min-height: 42px;
+      border: 0;
+      border-radius: 6px;
+      padding: 0 16px;
+      color: #fff;
+      background: var(--accent);
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .status { color: var(--muted); }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Pinterest OAuth callback</h1>
+    <p class="status" id="status">Reading the redirect URL locally in this browser.</p>
+
+    <section class="panel warning">
+      <p><strong>Do not paste the OAuth code into ChatGPT.</strong></p>
+      <p>Copy only the code below into the local Aether script or save it in the local ignored file named by the re-auth README. Never copy app secrets, tokens, cookies, or passwords here.</p>
+    </section>
+
+    <section class="panel">
+      <h2>OAuth code</h2>
+      <textarea id="code" readonly spellcheck="false" aria-label="OAuth code"></textarea>
+      <p><button type="button" id="copy">Copy code</button></p>
+    </section>
+
+    <section class="panel">
+      <h2>Next local step</h2>
+      <p>On Noah's machine, run:</p>
+      <p><code>EXCHANGE_PINTEREST_CODE_FOR_TOKEN.ps1</code></p>
+      <p>When prompted, paste the OAuth code locally. The script exchanges it for tokens and updates the local secret file without printing token values.</p>
+    </section>
+
+    <section class="panel">
+      <h2>State check</h2>
+      <p id="state">State value: checking...</p>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var code = params.get('code') || '';
+      var state = params.get('state') || '';
+      var codeBox = document.getElementById('code');
+      var status = document.getElementById('status');
+      var stateNode = document.getElementById('state');
+      codeBox.value = code;
+      status.textContent = code ? 'OAuth code found in the URL. Copy it only into the local exchange script.' : 'No OAuth code was found in the URL.';
+      stateNode.textContent = state ? 'State value is present. The local exchange script will validate it if saved locally.' : 'State value is missing.';
+      document.getElementById('copy').addEventListener('click', function () {
+        if (!code) return;
+        navigator.clipboard.writeText(code).then(function () {
+          status.textContent = 'OAuth code copied. Paste it only into the local Aether exchange script.';
+        });
+      });
+    }());
+  </script>
+</body>
+</html>
+
