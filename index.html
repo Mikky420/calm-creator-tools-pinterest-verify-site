@@ -33,6 +33,7 @@
     .section { margin-top:38px; }
     .grid { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:16px; }
     .product-card { background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:16px; min-height:210px; display:flex; flex-direction:column; }
+    .product-card img { width:100%; aspect-ratio:1; object-fit:cover; border-radius:6px; margin-bottom:14px; border:1px solid var(--line); }
     .product-card p { color:var(--muted); }
     .product-card a { margin-top:auto; }
     .product-id { font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--accent-dark) !important; font-weight:700; }
@@ -47,7 +48,7 @@
       <div class="links" aria-label="Site navigation">
         <a href="./products/">Products</a>
         <a href="./privacy-policy/">Privacy</a>
-        <a href="./catalog/products.csv">Catalog draft</a>
+        <a href="./catalog/products.csv">Product catalog</a>
         <a href="https://calmcreatortools.etsy.com">Etsy shop</a>
       </div>
     </nav>
@@ -65,11 +66,32 @@
       <aside class="summary" aria-label="Site summary">
         <strong>Static GitHub Pages site</strong>
         <p>This mini-site supports website verification and product discovery for Calm Creator Tools.</p>
-        <p>Product links point to Etsy listings identified in local Aether tracking files. Catalog image and price fields remain draft placeholders until confirmed.</p>
+        <p>The product feed contains only the two current priority listings whose exact destination, primary image, availability, and seller-base price are backed by post-publication evidence.</p>
       </aside>
     </section>
+    <section class="section" aria-labelledby="priority-products">
+      <h2 id="priority-products">Priority coloring books</h2>
+      <p>Current direct-download Etsy listings with verified product details and approved preview images.</p>
+      <div class="grid">
+        <article class="product-card" data-listing-id="4521361912">
+          <img src="https://i.etsystatic.com/44296510/r/il/a66dea/8314435461/il_794xN.8314435461_9our.jpg" alt="Little Adventure Worlds printable coloring book cover and page preview" width="794" height="794" loading="lazy">
+          <p class="product-id">Etsy 4521361912</p>
+          <h3>Little Adventure Worlds Kids Coloring Book, 25 Printable Activity Pages, US Letter and A4 PDF</h3>
+          <p>Explore 25 imaginative coloring pages for quiet time, travel and screen-free play. The direct Etsy download includes A4 and US Letter PDFs plus high-resolution PNG and JPG convenience pages. See the actual page previews and print one test page first.</p>
+          <a href="https://www.etsy.com/listing/4521361912/little-adventure-worlds-coloring-book">View Little Adventure Worlds on Etsy</a>
+        </article>
+        <article class="product-card" data-listing-id="4521363578">
+          <img src="https://i.etsystatic.com/44296510/r/il/e7e2be/8270270234/il_794xN.8270270234_bwrc.jpg" alt="Fantasy Quest printable coloring book cover and page preview" width="794" height="794" loading="lazy">
+          <p class="product-id">Etsy 4521363578</p>
+          <h3>Fantasy Quest Coloring Book for Kids and Tweens, 25 Printable Pages, US Letter and A4 PDF</h3>
+          <p>A printable fantasy coloring adventure with 25 verified pages featuring castles, creatures and quest scenes. The direct Etsy download includes A4 and US Letter PDFs plus high-resolution PNG and JPG convenience pages for flexible home printing.</p>
+          <a href="https://www.etsy.com/listing/4521363578/fantasy-quest-coloring-book-printable">View Fantasy Quest on Etsy</a>
+        </article>
+      </div>
+    </section>
     <section class="section">
-      <h2>Product mini-site</h2>
+      <h2>More printable tools</h2>
+      <p>These discovery links are preserved from the existing mini-site. They are not included in the verified product feed until their catalog fields are independently confirmed.</p>
       <div class="grid">
         <article class="product-card">
           <p class="product-id">P01</p>
