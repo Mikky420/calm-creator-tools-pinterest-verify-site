@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mikky420.github.io/calm-creator-tools-pinterest-verify-site/sitemap.xml
